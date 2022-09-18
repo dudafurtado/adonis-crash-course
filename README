@@ -1,0 +1,102 @@
+# Step by step AdonisJS crash course
+## by Marius Espejo
+
+1. npm init adonis-ts-app@latest name-of-project
+(for a TypeScript language following the framework adonis)
+
+2. Type of:
+web for a front + back-end project
+api to a bacj-end aplication 
+slim the most basic one
+
+3. Enter name and eslint and prettier
+
+4. npm run dev
+or
+cd name-of-project
+node ace serve --watch
+
+5. at this start moment you should play with routes on de file inside the start folder
+make sure to use inside the async function ({ params, request, response, query })
+get the request.body()
+inform a response.status()
+and return 'something' so you can check everything out
+
+
+# Routes created for test
+
+*http://localhost:3333*
+
+## GET '/'
+
+response:
+{
+  "hello": "world"
+}
+
+## POST '/post'
+
+response:
+{
+  "message": "Hello I am the first route created by Duda's hands on this project"
+}
+
+## GET '/get/:id'
+
+request: 
+http://localhost:3333/get/*25*
+
+response:
+The id informated on params is 25
+
+## PATCH '/context'
+
+request:
+  "name": "Duda",
+  "message": "It's a plesure to meet you"
+}
+
+response:
+It's a plesure to meet you
+
+6. now its time to organize your controllers
+node ace make:controller Pet
+on this file you should provide some metodos so you can call on the routes file between string 'SomethingsController.index'
+
+## GET '/pets'
+
+response:
+list of pets
+
+## POST '/pets/create'
+
+request:
+{
+  "name": "Bobby",
+  "especie": "Cat",
+  "description": "It has a cold heart but it's beautiful",
+  "family": "2 sons"
+}
+
+response:
+{
+  "whatWasAdded": {
+    "name": "Bobby",
+    "especie": "Cat",
+    "description": "It has a cold heart but it's beautiful",
+    "family": "2 sons"
+  },
+  "message": "You added sucessfully a pet"
+}
+
+7. node ace list:routes
+show you all the routes that you created until now 
+
+8. to make crud more flexible 
+Route.resource('/cars', 'CarsController') + node ace list:routes
+you will be able to get all the possible routes on your terminal
+
+
+
+##
+##
