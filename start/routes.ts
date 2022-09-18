@@ -41,4 +41,10 @@ Route.patch('/context', async ({ request, response }) => {
 })
 
 Route.get('/pets', 'PetsController.index')
-Route.post('/pets/create', 'PetsController.store')
+Route.post('/pets/new', 'PetsController.store')
+
+Route.resource('/animals', 'AnimalsController')
+
+Route.resource('animals.pets', 'AnimalsController')
+// NESTED RESOUCE / ROUTES
+// routes that will create a relationship of animals, animal_id and pets + (id)

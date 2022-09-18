@@ -63,12 +63,12 @@ It's a plesure to meet you
 node ace make:controller Pet
 on this file you should provide some metodos so you can call on the routes file between string 'SomethingsController.index'
 
-## GET '/pets'
+## GET '/pets' = index()
 
 response:
 list of pets
 
-## POST '/pets/create'
+## POST '/pets/new' = store()
 
 request:
 {
@@ -95,8 +95,68 @@ show you all the routes that you created until now
 8. to make crud more flexible 
 Route.resource('/cars', 'CarsController') + node ace list:routes
 you will be able to get all the possible routes on your terminal
+apiOnly() at the end is ideal if its just a back-end application
+
+## GET '/animals' = index()
+
+response:
+Should list all the content related to the class
+
+## GET '/animals/create'
+
+**just example, this is for web format**
+
+## POST '/animals' = store()
+
+request: 
+{
+  "name": "Lion"
+}
+
+response:
+{
+  "message": "We gonna add the content of body on the database",
+  "newAnimal": {
+    "name": "Lion"
+  }
+}
+
+## GET '/animals/:id' = show()
+
+response:
+Display only the animal number 1
+
+## GET '/animals/:id/edit' = edit()
+
+**just example, this is for web format**
+
+## PUT | PATCH '/animals/:id' = update()
+
+request: 
+{
+  "name": "tiger"
+}
+
+response:
+{
+  "message": "We going to edit the animal that already exists at database based on the id informed",
+  "dataToUpdated": {
+    "name": "tiger"
+  },
+  "animalThatWillBeUpdated": "2"
+}
+
+## DELETE '/animals/:id' = destroy()
+
+response:
+The idea is to delete / destroy the number 2 on the list
 
 
+*Now it's time to make thing feel more real*
+
+9. Add and Config database 
+npm install @adonisjs/lucid
+node ace 
 
 ##
 ##
