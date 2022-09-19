@@ -208,3 +208,106 @@ node ace make:validator CreateFish
 import the validator on the controller and use
 await request.validate(CreateFish)
 The name of the vallidate data normally are call of 'payload'
+
+
+## GET '/owner' = index()
+
+response:
+- Array with all the owners
+[]
+[
+  {
+    "id": 1,
+    "name": "Duda",
+    "email": "duda@email.com",
+    "age": 19,
+    "description": 1,
+    "created_at": "2022-09-19T11:15:57.000-03:00",
+    "updated_at": "2022-09-19T11:15:57.000-03:00"
+  }
+]
+
+## POST '/owner' = store()
+
+request: 
+{
+  "name": "Duda",
+  "email": "duda@email.com",
+  "age": 19,
+  "description": 1
+}
+
+response:
+{
+  "message": "Owner created successfully"
+}
+
+this is the type of error you are going to recive if something goes wrong:
+{
+  "errors": [
+    {
+      "rule": "alpha",
+      "field": "name",
+      "message": "alpha validation failed"
+    },
+    {
+      "rule": "unique",
+      "field": "email",
+      "message": "unique validation failure"
+    }
+  ]
+}
+
+## GET '/owner/:id' = show()
+
+response:
+{
+  "id": 2,
+  "name": "Maria",
+  "email": "maria@email.com",
+  "age": 30,
+  "description": 2,
+  "created_at": "2022-09-19T11:24:37.000-03:00",
+  "updated_at": "2022-09-19T11:24:37.000-03:00"
+}
+
+## PUT | PATCH '/owner/:id' = update()
+
+request: 
+{
+  "name": "Elena",
+  "email": "mariaelena@email.com",
+  "age": 26,
+  "description": 1
+}
+
+response:
+{
+  "id": 2,
+  "name": "Elena",
+  "email": "maria@email.com",
+  "age": 30,
+  "description": 2,
+  "created_at": "2022-09-19T11:24:37.000-03:00",
+  "updated_at": "2022-09-19T11:27:29.390-03:00"
+}
+
+## DELETE '/owner/:id' = destroy()
+
+response:
+{
+  "message": "Owner deleted"
+}
+
+14. Don't forgot that we have to important commands
+npm run build
+to make typescript into javascript. you need to use before commit
+npm run dev
+to make your project run on localhost
+
+15. test everything to make sure you understand
+
+16. git add . && git commit -m "Project completed"
+git push origin master / main
+
+*I hope wwe have learn something funny together today. Have a wonderful day!*
