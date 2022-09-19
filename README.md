@@ -1,5 +1,5 @@
 # Step by step AdonisJS crash course
-## by Marius Espejo
+## Inpired from https://www.youtube.com/watch?v=bSvw887ptKI by Marius Espejo
 
 1. npm init adonis-ts-app@latest name-of-project
 (for a TypeScript language following the framework adonis)
