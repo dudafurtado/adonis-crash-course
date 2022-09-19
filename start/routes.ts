@@ -46,5 +46,7 @@ Route.post('/pets/new', 'PetsController.store')
 Route.resource('/animals', 'AnimalsController')
 
 Route.resource('animals.pets', 'AnimalsController')
-// NESTED RESOUCE / ROUTES
+// NESTED RESOURCE / ROUTES
 // routes that will create a relationship of animals, animal_id and pets + (id)
+
+Route.resource('/owner', 'OwnersController').apiOnly()

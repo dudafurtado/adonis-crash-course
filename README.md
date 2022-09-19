@@ -156,7 +156,55 @@ The idea is to delete / destroy the number 2 on the list
 
 9. Add and Config database 
 npm install @adonisjs/lucid
-node ace 
+node ace configure @adonisjs/lucid
+select the type of system of database
 
-##
-##
+10. To work with database you must create some tables based on the project
+Let's create a migration
+node ace make:migration pets
+node ace make:migration animals
+the sintax of migration is based on Knex.js
+Examples: {
+  table.increments('id');
+  table.string('name');
+}
+Time to run this migration
+node ace migration:run
+
+11. To manipulate the data inside migration its time for the model
+Let's create a model
+node ace make:model Pet
+@column()
+public name:string
+For each table you need to have a individual model
+! luxon is a library that are use inside Adonis to define a type of date
+! luxon = moment.js
+The model are not going to change the schema for migrations / database
+
+12. Import the model inside the controller with the first letter upper case 
+index () ---> await Pet.all() = select * from pets
+store () ---> await Pet.create(request.body()) = insert 
+show () ---> await Pet.findOrFail(params.id) 
+update () ---> const pet = await Pet.findOrFail(params.id)
+PUT) pet = body OR PATCH) pet.something = body.something
+await pet.save()
+destroy () ---> const pet = await Pet.findOrFail(params.id)
+await pet.delete()
+
+! findOrFail() is used to stop the application at this current line if there is anything at the specific search at database
+! Pet.findOrFail(params.id) = select * from pets where 'id'
+
+13. Time to validate our request 
+Let's create a validator
+node ace make:validator CreateFish
+(metodo) public schema = schema.create({
+  name: schema.string({ trim: true }),
+  age: schema.number(),
+  description: schema.string(),
+  email: schema.string({}, [
+    rules.email(),
+  ]),
+})
+import the validator on the controller and use
+await request.validate(CreateFish)
+The name of the vallidate data normally are call of 'payload'

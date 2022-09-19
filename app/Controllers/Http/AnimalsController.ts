@@ -27,7 +27,7 @@ export default class AnimalsController {
   }
 
   async update ({ params, request, response }: HttpContextContract) {
-    response.status(202)
+    response.status(201)
     return {
       message: 'We going to edit the animal that already exists at database based on the id informed',
       dataToUpdated: request.body(),
